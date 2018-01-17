@@ -5,4 +5,7 @@
     <dimen name="default_dash_indicator_width">12dp</dimen>
     <dimen name="round_square_indicator_radius">2dp</dimen>
     <dimen name="max_slider_indicator_size">16dp</dimen>
+
+    <dimen name="slider_image_corner">7dp</dimen>
+
 </resources>
