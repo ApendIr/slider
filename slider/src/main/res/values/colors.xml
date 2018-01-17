@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="default_indicator_color_selected">#eeee</color>
+    <color name="default_indicator_color_unselected">#66eeeeee</color>
+    <color name="default_ripple_color">#fafafa</color>
+    <!--black transparent-->
+    <color name="transparent">#00000000</color>
+
+    <color name="black_transparent_80">#cc000000</color>
+    <color name="black_transparent_60">#a5000000</color>
+    <color name="black_transparent_50">#7e000000</color>
+    <color name="black_transparent_45">#80000000</color>
+    <color name="black_transparent_40">#61000000</color>
+    <color name="black_transparent_25">#44000000</color>
+    <color name="black_transparent_22">#3f000000</color>
+    <color name="black_transparent_20">#39000000</color>
+    <color name="black_transparent_18">#29000000</color>
+    <color name="black_transparent_15">#23000000</color>
+    <color name="black_transparent_10">#15000000</color>
+</resources>
