@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 ext {
-    PUBLISH_GROUP_ID = 'ir.farzadfarazmand.library'
+    PUBLISH_GROUP_ID = 'ir.apend.library'
     PUBLISH_ARTIFACT_ID = 'slider'
     PUBLISH_VERSION = '1.0'
 }
