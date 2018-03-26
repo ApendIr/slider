@@ -2,6 +2,12 @@
 
 A beautiful and also simple image slider for android!
 
+## Screenshots
+
+[](https://user-images.githubusercontent.com/35394143/37894691-3c42681e-30f4-11e8-8a94-ffe08c4acbea.gif)
+
+[Download Demo](https://github.com/ApendIr/slider/blob/master/demo/release/demo-release.apk?raw=true)
+
 ## Getting Started
 
 First add xml view :
