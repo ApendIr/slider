@@ -46,7 +46,22 @@ slider.addSlides(slideList);
 ```
 ### Installing
 
-Add library module to your project and that's it! Gradle support will be added soon.
+#### Gradle
+```groovy
+dependencies {
+            compile 'ir.apend.library:slider:1.0'
+}
+```
+#### Maven
+
+```xml
+<dependency>
+  <groupId>ir.apend.library</groupId>
+  <artifactId>slider</artifactId>
+  <version>1.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 
 ## Contributing
