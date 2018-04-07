@@ -48,9 +48,7 @@ slider.addSlides(slideList);
 
 #### Gradle
 ```groovy
-dependencies {
-            compile 'ir.apend.library:slider:1.0'
-}
+[![](https://jitpack.io/v/ApendIr/slider.svg)](https://jitpack.io/#ApendIr/slider)
 ```
 #### Maven
 
