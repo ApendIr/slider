@@ -48,18 +48,35 @@ slider.addSlides(slideList);
 
 #### Gradle
 ```groovy
+1.Add the JitPack repository to your build file
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+2.Add the dependency
 dependencies {
-            compile 'ir.apend.library:slider:1.0'
+	        compile 'com.github.ApendIr:slider:1.0'
 }
 ```
 #### Maven
 
 ```xml
+1.Add the JitPack repository to your build file
+<repositories>
+            <repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+
+2.Add the dependency
 <dependency>
-  <groupId>ir.apend.library</groupId>
-  <artifactId>slider</artifactId>
-  <version>1.0</version>
-  <type>pom</type>
+	<groupId>com.github.ApendIr</groupId>
+	 <artifactId>slider</artifactId>
+	<version>1.0</version>
 </dependency>
 ```
 
