@@ -62,7 +62,7 @@ public class SliderAdapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 if (itemClickListener != null)
-                    itemClickListener.onItemClick(null, null, position, 0);
+                    itemClickListener.onItemClick(null, view, position, 0);
             }
         });
         container.addView(view);
