@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class SliderAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.row_slider, container, false);
         ImageView sliderImage = (ImageView) view.findViewById(R.id.sliderImage);
         loadImage(sliderImage, items.get(position).getImageUrl(), items.get(position).getImageCorner());
-        View parent = view.findViewById(R.id.ripple);
+        View parent = view.findViewById(R.id.parent);
         parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +91,7 @@ public class SliderAdapter extends PagerAdapter {
         if (!TextUtils.isEmpty(url)) {
             Glide.with(imageView.getContext()) // Bind it with the context of the actual view used
                     .load(url) // Load the image
-                    .bitmapTransform(new CenterCrop(imageView.getContext()), new RoundedCornersTransformations(imageView.getContext(), corner, 0, RoundedCornersTransformations.CornerType.ALL))
+                    .bitmapTransform(new FitCenter(imageView.getContext()), new RoundedCornersTransformations(imageView.getContext(), corner, 0, RoundedCornersTransformations.CornerType.ALL))
                     .animate(R.anim.fade_in) // need to manually set the animation as bitmap cannot use cross fade
                     .into(imageView);
         }

@@ -10,20 +10,24 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.List;
 import java.util.Random;
 
-import ir.apend.slider.model.Slide;
 import ir.apend.slider.ui.adapter.SliderAdapter;
 import ir.apend.slider.ui.customUI.LooperWrapViewPager;
 import ir.apend.slider.ui.indicators.IndicatorShape;
+import ir.apend.slider.model.Slide;
 import ir.apend.slider.ui.indicators.SlideIndicatorsGroup;
 import ir.apend.sliderlibrary.R;
+
 
 /**
  * Created by Farzad Farazmand on 28,June,2017
@@ -104,8 +108,11 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
             int id = Math.abs(new Random().nextInt((5000 - 1000) + 1) + 1000);
             viewPager.setId(id);
         }
-        viewPager.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        viewPager.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         viewPager.addOnPageChangeListener(Slider.this);
+        viewPager.setClipChildren(false);
+        viewPager.setClipToPadding(false);
+        viewPager.setOffscreenPageLimit(3);
         addView(viewPager);
         SliderAdapter adapter = new SliderAdapter(getContext(), slideList, new AdapterView.OnItemClickListener() {
             @Override
