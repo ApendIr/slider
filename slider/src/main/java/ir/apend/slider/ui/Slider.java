@@ -54,6 +54,7 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
     private Handler handler = new Handler();
     private int slideCount;
     private int currentPageNumber;
+    private int pageMargin;
     private boolean hideIndicators = false;
 
     public Slider(@NonNull Context context) {
@@ -76,6 +77,7 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
                 TypedArray typedArray = getContext().obtainStyledAttributes(attributeSet, R.styleable.BannerSlider);
                 try {
                     indicatorSize = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_indicatorSize, getResources().getDimensionPixelSize(R.dimen.default_indicator_size));
+                    pageMargin = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_pageMargin, getResources().getDimensionPixelSize(R.dimen.default_indicator_size));
                     selectedSlideIndicator = typedArray.getDrawable(R.styleable.BannerSlider_selected_slideIndicator);
                     unSelectedSlideIndicator = typedArray.getDrawable(R.styleable.BannerSlider_unselected_slideIndicator);
                     defaultIndicator = typedArray.getInt(R.styleable.BannerSlider_defaultIndicators, IndicatorShape.CIRCLE);
@@ -113,6 +115,7 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
         viewPager.setClipChildren(false);
         viewPager.setClipToPadding(false);
         viewPager.setOffscreenPageLimit(3);
+        viewPager.setPageMargin(pageMargin);
         addView(viewPager);
         SliderAdapter adapter = new SliderAdapter(getContext(), slideList, new AdapterView.OnItemClickListener() {
             @Override

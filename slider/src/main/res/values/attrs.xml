@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="BannerSlider">
         <attr name="indicatorSize" format="dimension" />
+        <attr name="pageMargin" format="dimension" />
         <attr name="selected_slideIndicator" format="reference" />
         <attr name="unselected_slideIndicator" format="reference" />
         <attr name="defaultIndicators" format="integer">
