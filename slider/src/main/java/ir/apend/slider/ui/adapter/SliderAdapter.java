@@ -1,6 +1,7 @@
 package ir.apend.slider.ui.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
@@ -33,11 +34,13 @@ public class SliderAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     private AdapterView.OnItemClickListener itemClickListener;
     private List<Slide> items = new ArrayList<>();
+    private Drawable imageDefault;
 
-    public SliderAdapter(@NonNull Context context, List<Slide> items, AdapterView.OnItemClickListener itemClickListener) {
+    public SliderAdapter(@NonNull Context context, List<Slide> items, Drawable imageDefault, AdapterView.OnItemClickListener itemClickListener) {
         this.items = items;
         this.itemClickListener = itemClickListener;
         layoutInflater = LayoutInflater.from(context);
+        this.imageDefault=imageDefault;
     }
 
     @Override
@@ -56,6 +59,11 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         View view = layoutInflater.inflate(R.layout.row_slider, container, false);
+
+        ImageView sliderImageDefault = (ImageView) view.findViewById(R.id.sliderImageDefault);
+        if (imageDefault!=null)
+            sliderImageDefault.setImageDrawable(imageDefault);
+
         ImageView sliderImage = (ImageView) view.findViewById(R.id.sliderImage);
         loadImage(sliderImage, items.get(position).getImageUrl(), items.get(position).getImageCorner());
         View parent = view.findViewById(R.id.parent);
@@ -69,6 +77,7 @@ public class SliderAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
+
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {

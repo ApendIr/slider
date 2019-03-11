@@ -3,24 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     tools:context="ir.apend.slidersample.MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/slider_bg">
 
         <ir.apend.slider.ui.Slider
             android:id="@+id/slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            app:pageMargin="5dp"
+            app:imageDefault="@mipmap/picture"
             app:animateIndicators="true"
             app:defaultIndicators="circle"
             app:indicatorSize="8dp"
             app:intervalSecond="5"
             app:loopSlides="true" />
-    </FrameLayout>
+
 
 </RelativeLayout>

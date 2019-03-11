@@ -15,5 +15,6 @@
         <attr name="intervalSecond" format="integer"/>
         <attr name="loopSlides" format="boolean"/>
         <attr name="hideIndicators" format="boolean"/>
+        <attr name="imageDefault" format="reference"/>
     </declare-styleable>
 </resources>

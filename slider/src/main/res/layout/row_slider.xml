@@ -1,14 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <!--place holder-->
-    <ImageView
+    <ir.apend.slider.ui.customUI.AdjustableImageView
+        android:id="@+id/sliderImageDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@mipmap/ic_image" />
+        app:srcCompat="@mipmap/ic_image" />
 
     <ir.apend.slider.ui.customUI.AdjustableImageView
         android:id="@+id/sliderImage"
