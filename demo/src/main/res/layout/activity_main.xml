@@ -17,9 +17,10 @@
             app:imageDefault="@mipmap/picture"
             app:animateIndicators="true"
             app:defaultIndicators="circle"
+            app:defaultTransformer="carousel_effect"
             app:indicatorSize="8dp"
             app:intervalSecond="5"
-            app:loopSlides="true" />
+            app:loopSlides="false" />
 
 
 </RelativeLayout>

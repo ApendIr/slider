@@ -3,6 +3,10 @@
     <declare-styleable name="BannerSlider">
         <attr name="indicatorSize" format="dimension" />
         <attr name="pageMargin" format="dimension" />
+        <attr name="paddingTop" format="dimension" />
+        <attr name="paddingLeft" format="dimension" />
+        <attr name="paddingRight" format="dimension" />
+        <attr name="paddingBottom" format="dimension" />
         <attr name="selected_slideIndicator" format="reference" />
         <attr name="unselected_slideIndicator" format="reference" />
         <attr name="defaultIndicators" format="integer">
@@ -16,5 +20,20 @@
         <attr name="loopSlides" format="boolean"/>
         <attr name="hideIndicators" format="boolean"/>
         <attr name="imageDefault" format="reference"/>
+        <attr name="defaultTransformer" format="integer">
+            <enum name="anti_clock_spin" value="1" />
+            <enum name="carousel_effect" value="2" />
+            <enum name="clock_spin" value="3"/>
+            <enum name="cube_in_rotation" value="4"/>
+            <enum name="cube_out_rotation" value="5"/>
+            <enum name="depth" value="6"/>
+            <enum name="fade_out" value="7"/>
+            <enum name="horizontal_flip" value="8"/>
+            <enum name="simple" value="9"/>
+            <enum name="spinner" value="10"/>
+            <enum name="vertical_flip" value="11"/>
+            <enum name="vertical_shut" value="12"/>
+            <enum name="zoom_out" value="13"/>
+        </attr>
     </declare-styleable>
 </resources>

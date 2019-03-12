@@ -8,4 +8,5 @@
 
     <dimen name="slider_image_corner">7dp</dimen>
     <dimen name="default_page_margin">0dp</dimen>
+    <dimen name="default_padding">0dp</dimen>
 </resources>

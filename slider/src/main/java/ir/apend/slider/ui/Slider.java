@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +18,7 @@ import android.widget.FrameLayout;
 import java.util.List;
 import java.util.Random;
 
+import ir.apend.slider.ui.Transformers.TransformersGroup;
 import ir.apend.slider.ui.adapter.SliderAdapter;
 import ir.apend.slider.ui.customUI.LooperWrapViewPager;
 import ir.apend.slider.ui.indicators.IndicatorShape;
@@ -45,6 +45,7 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
     private Drawable sliderImageDefault;
     private int defaultIndicator;
     private int indicatorSize;
+    private int defaultTransformer;
     private boolean mustAnimateIndicators;
     private boolean mustLoopSlides;
     private SlideIndicatorsGroup slideIndicatorsGroup;
@@ -54,6 +55,10 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
     private int slideCount;
     private int currentPageNumber;
     private int pageMargin;
+    private int paddingTop;
+    private int paddingLeft;
+    private int paddingRight;
+    private int paddingBottom;
     private boolean hideIndicators = false;
 
     public Slider(@NonNull Context context) {
@@ -76,7 +81,11 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
                 TypedArray typedArray = getContext().obtainStyledAttributes(attributeSet, R.styleable.BannerSlider);
                 try {
                     indicatorSize = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_indicatorSize, getResources().getDimensionPixelSize(R.dimen.default_indicator_size));
-                    pageMargin = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_pageMargin, getResources().getDimensionPixelSize(R.dimen.default_indicator_size));
+                    pageMargin = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_pageMargin, getResources().getDimensionPixelSize(R.dimen.default_page_margin));
+                    paddingTop = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_paddingTop, getResources().getDimensionPixelSize(R.dimen.default_padding));
+                    paddingLeft = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_paddingLeft, getResources().getDimensionPixelSize(R.dimen.default_padding));
+                    paddingRight = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_paddingRight, getResources().getDimensionPixelSize(R.dimen.default_padding));
+                    paddingBottom = typedArray.getDimensionPixelSize(R.styleable.BannerSlider_paddingBottom, getResources().getDimensionPixelSize(R.dimen.default_padding));
                     selectedSlideIndicator = typedArray.getDrawable(R.styleable.BannerSlider_selected_slideIndicator);
                     unSelectedSlideIndicator = typedArray.getDrawable(R.styleable.BannerSlider_unselected_slideIndicator);
                     sliderImageDefault = typedArray.getDrawable(R.styleable.BannerSlider_imageDefault);
@@ -85,6 +94,7 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
                     mustLoopSlides = typedArray.getBoolean(R.styleable.BannerSlider_loopSlides, false);
                     hideIndicators = typedArray.getBoolean(R.styleable.BannerSlider_hideIndicators, false);
                     int slideShowIntervalSecond = typedArray.getInt(R.styleable.BannerSlider_intervalSecond, 5);
+                    defaultTransformer= typedArray.getInt(R.styleable.BannerSlider_defaultTransformer, 9);
                     slideShowInterval = slideShowIntervalSecond * 1000;
 
                 } catch (Exception e) {
@@ -98,7 +108,19 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
         }
     }
 
-    public void addSlides(List<Slide> slideList,Drawable imageDefault) {
+    public void addSlides(List<Slide> slideList){
+        addSlides(slideList,null,null);
+    }
+
+    public void addSlides(List<Slide> slideList, Drawable imageDefault){
+        addSlides(slideList,imageDefault,null);
+    }
+
+    public void addSlides(List<Slide> slideList, ViewPager.PageTransformer transformer){
+        addSlides(slideList,null,transformer);
+    }
+
+    public void addSlides(List<Slide> slideList, Drawable imageDefault, ViewPager.PageTransformer transformer) {
         if (slideList == null || slideList.size() == 0)
             return;
 
@@ -113,12 +135,19 @@ public class Slider extends FrameLayout implements ViewPager.OnPageChangeListene
             int id = Math.abs(new Random().nextInt((5000 - 1000) + 1) + 1000);
             viewPager.setId(id);
         }
+
+        if (transformer!=null)
+            viewPager.setPageTransformer(false,transformer);
+        else
+            viewPager.setPageTransformer(false,new TransformersGroup().getTransformer(getContext(),defaultTransformer));
+
         viewPager.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         viewPager.addOnPageChangeListener(Slider.this);
         viewPager.setClipChildren(false);
         viewPager.setClipToPadding(false);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setPageMargin(pageMargin);
+        viewPager.setPadding(paddingLeft,paddingTop,paddingRight,paddingBottom);
         addView(viewPager);
         SliderAdapter adapter = new SliderAdapter(getContext(), slideList, sliderImageDefault,new AdapterView.OnItemClickListener() {
             @Override
